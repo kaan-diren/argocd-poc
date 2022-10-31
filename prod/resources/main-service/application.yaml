@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: react-taxy:v1.5.0
+        image: nginx:latest # react-taxy:v1.5.0
         ports:
         - containerPort: 80
