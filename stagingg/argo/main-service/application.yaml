@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: main-service-stagingg
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    namespace: stagingg
+    server: "https://kubernetes.default.svc"
+  source:
+    repoURL: https://github.com/kaan-diren/argocd-poc.git
+    targetRevision: HEAD
+    path: stagingg/resources/main-service
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
